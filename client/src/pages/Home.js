@@ -123,13 +123,6 @@ const Home = () => {
         </div>
       </div>
 
-      <footer className="home-footer">
-        <h3>SHOPEZ : E-commerce Application</h3>
-        <p>(SmartBridge Internship Project)</p>
-        <p style={{ marginTop: '15px', fontSize: '12px', opacity: 0.6 }}>
-          © {new Date().getFullYear()} ShopEz. All rights reserved.
-        </p>
-      </footer>
     </div>
   );
 };
