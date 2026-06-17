@@ -34,8 +34,12 @@ const Register = () => {
       console.error("Server registration failed, attempting local fallback:", err);
       
       if (err.response && err.response.data && err.response.data.message) {
-        setError(err.response.data.message);
-        return;
+        const msg = err.response.data.message;
+        // Only show validation errors and abort fallback
+        if (msg === "User already exists" || msg.toLowerCase().includes("required")) {
+          setError(msg);
+          return;
+        }
       }
 
       // Offline fallback

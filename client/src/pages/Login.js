@@ -26,8 +26,12 @@ const Login = () => {
       console.error("Server login failed, attempting local fallback:", err);
 
       if (err.response && err.response.data && err.response.data.message) {
-        setError(err.response.data.message);
-        return;
+        const msg = err.response.data.message;
+        // Only show validation errors and abort fallback
+        if (msg === "Invalid email or password" || msg === "Invalid password" || msg.toLowerCase().includes("required")) {
+          setError(msg);
+          return;
+        }
       }
 
       // Offline fallback
