@@ -1,17 +1,20 @@
 .home {
   min-height: 100vh;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  background-color: #fafafa;
 }
 
 .hero {
-  background: linear-gradient(135deg, #2c3e50, #3498db);
+  background: linear-gradient(135deg, #1e293b, #3b82f6);
   color: white;
   text-align: center;
-  padding: 100px 20px;
+  padding: 110px 20px;
 }
 
 .hero h1 {
   font-size: 48px;
   margin-bottom: 15px;
+  font-weight: 800;
 }
 
 .hero p {
@@ -27,11 +30,15 @@
   border-radius: 30px;
   font-size: 18px;
   font-weight: bold;
-  transition: background 0.3s;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
 }
 
 .hero-btn:hover {
   background-color: #e67e22;
+  transform: translateY(-2px);
 }
 
 .features {
@@ -39,6 +46,7 @@
   justify-content: center;
   gap: 30px;
   padding: 50px 20px;
+  flex-wrap: wrap;
 }
 
 .feature-card {
@@ -47,10 +55,88 @@
   border-radius: 12px;
   font-size: 18px;
   font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid #f1f2f6;
+  text-align: center;
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* 🔄 Infinite Scrolling Marquee */
+.why-choose-section {
+  text-align: center;
+  margin-top: 60px;
+  padding: 40px 0;
+  background-color: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.why-choose-section h2 {
+  font-size: 26px;
+  color: #1e293b;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+.ticker-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.ticker-track {
+  display: inline-flex;
+  gap: 50px;
+  animation: scroll-ticker 30s linear infinite;
+  padding: 10px 0;
+}
+
+.ticker-item {
+  font-size: 16px;
+  font-weight: 600;
+  color: #475569;
+  background: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+  border: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+@keyframes scroll-ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 🏷️ Footer Styles */
+.home-footer {
+  text-align: center;
+  padding: 45px 20px;
+  background: #1e293b;
+  color: #94a3b8;
+  margin-top: 70px;
+  border-top: 4px solid #f39c12;
+}
+
+.home-footer h3 {
+  color: #f1f5f9;
+  font-size: 20px;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.home-footer p {
+  font-size: 14px;
+  margin: 4px 0;
+  opacity: 0.8;
 }

@@ -102,21 +102,34 @@ const Home = () => {
 
       </div>
 
-      <div
-        style={{
-          textAlign: 'center',
-          marginTop: '50px',
-          padding: '20px'
-        }}
-      >
+      <div className="why-choose-section">
         <h2>Why Choose ShopEz?</h2>
 
-        <p>✅ High Quality Products</p>
-        <p>✅ Fast Delivery Across India</p>
-        <p>✅ Safe & Secure Payments</p>
-        <p>✅ Easy Return Policy</p>
-        <p>✅ Best Customer Support</p>
+        <div className="ticker-container">
+          <div className="ticker-track">
+            {/* Set 1 */}
+            <span className="ticker-item">✅ High Quality Products</span>
+            <span className="ticker-item">✅ Fast Delivery Across India</span>
+            <span className="ticker-item">✅ Safe & Secure Payments</span>
+            <span className="ticker-item">✅ Easy Return Policy</span>
+            <span className="ticker-item">✅ Best Customer Support</span>
+            {/* Set 2 (Duplicated for infinite looping) */}
+            <span className="ticker-item">✅ High Quality Products</span>
+            <span className="ticker-item">✅ Fast Delivery Across India</span>
+            <span className="ticker-item">✅ Safe & Secure Payments</span>
+            <span className="ticker-item">✅ Easy Return Policy</span>
+            <span className="ticker-item">✅ Best Customer Support</span>
+          </div>
+        </div>
       </div>
+
+      <footer className="home-footer">
+        <h3>SHOPEZ : E-commerce Application</h3>
+        <p>(SmartBridge Internship Project)</p>
+        <p style={{ marginTop: '15px', fontSize: '12px', opacity: 0.6 }}>
+          © {new Date().getFullYear()} ShopEz. All rights reserved.
+        </p>
+      </footer>
     </div>
   );
 };
