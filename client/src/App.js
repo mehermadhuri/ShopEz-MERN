@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Products from './pages/Products';
 import Cart from './pages/Cart';
+import Stocks from './pages/Stocks';
 
 import FreeDelivery from './pages/FreeDelivery';
 import SecurePayment from './pages/SecurePayment';
@@ -34,6 +35,8 @@ function App() {
             <Route path="/products" element={<Products />} />
 
             <Route path="/cart" element={<Cart />} />
+
+            <Route path="/stocks" element={<Stocks />} />
 
             <Route
               path="/free-delivery"
