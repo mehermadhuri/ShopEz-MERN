@@ -24,7 +24,6 @@ const Navbar = () => {
       <div className="navbar-links">
         <Link to="/">Home</Link>
         <Link to="/products">Products</Link>
-        <Link to="/stocks">Stock Center 📈</Link>
 
         <Link to="/cart">
           🛒 Cart ({cartCount})
