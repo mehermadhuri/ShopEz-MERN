@@ -1,7 +1,15 @@
+require('dotenv').config();
 const mongoose = require("mongoose");
 const Product = require("./models/Product");
 
-mongoose.connect("mongodb://127.0.0.1:27017/shopez");
+const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/shopez";
+
+mongoose.connect(MONGO_URI)
+  .then(() => console.log('Connected to MongoDB for seeding...'))
+  .catch(err => {
+    console.error('Connection error during seeding:', err);
+    process.exit(1);
+  });
 
 const products = [
   { name: "Bluetooth Speaker", price: 999, image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1", stock: 10 },
