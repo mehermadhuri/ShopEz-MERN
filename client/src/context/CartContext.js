@@ -35,6 +35,8 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     if (user?._id) {
       fetchCart(user);
+    } else {
+      setCart([]);
     }
   }, [user]);
 
