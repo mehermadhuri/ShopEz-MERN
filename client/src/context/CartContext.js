@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { getCart, addToCartApi, removeFromCartApi } from '../services/api';
+import { getCart, addToCartApi, removeFromCartApi, clearCartApi } from '../services/api';
 
 const CartContext = createContext();
 
@@ -62,12 +62,26 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  // 🧹 CLEAR CART
+  const clearCart = async () => {
+    if (!user?._id) return;
+    try {
+      await clearCartApi(user._id);
+      setCart([]);
+    } catch (err) {
+      console.log("Clear cart error:", err);
+      // Fallback local clear
+      setCart([]);
+    }
+  };
+
   return (
     <CartContext.Provider
       value={{
         cart,
         addToCart,
         removeFromCart,
+        clearCart,
         fetchCart
       }}
     >

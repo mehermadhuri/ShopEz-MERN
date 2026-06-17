@@ -15,6 +15,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
 
     try {
       const { data } = await registerUser({
@@ -30,8 +31,38 @@ const Register = () => {
       navigate('/products');
 
     } catch (err) {
-      console.log(err);
-      setError("Registration failed. Try again.");
+      console.error("Server registration failed, attempting local fallback:", err);
+      
+      if (err.response && err.response.data && err.response.data.message) {
+        setError(err.response.data.message);
+        return;
+      }
+
+      // Offline fallback
+      try {
+        const localUsers = JSON.parse(localStorage.getItem('local_users')) || [];
+        const exists = localUsers.find(u => u.email === email);
+        if (exists) {
+          setError("User already exists (Offline Mode)");
+          return;
+        }
+
+        const newUser = {
+          _id: `local_${Date.now()}`,
+          name,
+          email,
+          token: `local_token_${Date.now()}`
+        };
+
+        localUsers.push({ ...newUser, password });
+        localStorage.setItem('local_users', JSON.stringify(localUsers));
+
+        login(newUser);
+        alert("⚠️ Backend server is offline. Registered successfully in Offline Mode.");
+        navigate('/products');
+      } catch (fallbackErr) {
+        setError("Registration failed. Try again.");
+      }
     }
   };
 

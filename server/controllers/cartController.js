@@ -68,8 +68,24 @@ const removeFromCart = async (req, res) => {
   }
 };
 
+// CLEAR CART
+const clearCart = async (req, res) => {
+  try {
+    const { userId } = req.body;
+    const cart = await Cart.findOne({ userId });
+    if (cart) {
+      cart.items = [];
+      await cart.save();
+    }
+    res.json(cart || { items: [] });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 module.exports = {
   getCart,
   addToCart,
-  removeFromCart
+  removeFromCart,
+  clearCart
 };

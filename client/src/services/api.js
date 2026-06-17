@@ -37,4 +37,7 @@ export const addToCartApi = (userId, product) =>
 export const removeFromCartApi = (userId, productId) =>
   API.post("/cart/remove", { userId, productId });
 
+export const clearCartApi = (userId) =>
+  API.post("/cart/clear", { userId });
+
 export default API;
