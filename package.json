@@ -1,0 +1,15 @@
+{
+  "name": "shopez-mern",
+  "version": "1.0.0",
+  "description": "ShopEz MERN Stack E-Commerce Application",
+  "scripts": {
+    "install-server": "cd server && npm install",
+    "install-client": "cd client && npm install",
+    "install-all": "npm run install-server && npm run install-client",
+    "build-client": "cd client && npm run build",
+    "start-server": "cd server && npm start",
+    "build": "npm run install-server",
+    "start": "npm run start-server"
+  },
+  "dependencies": {}
+}
